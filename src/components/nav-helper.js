@@ -1,3 +1,4 @@
+import app from 'ampersand-app'
 import React from 'react'
 import localLinks from 'local-links'
 
@@ -8,6 +9,8 @@ export default React.createClass({
 
     if (pathname) {
       event.preventDefault()
+
+      app.trigger('local-navigation', pathname)
       app.router.history.navigate(pathname)
     }
   },
