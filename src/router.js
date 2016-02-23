@@ -2,6 +2,7 @@ import Router from 'ampersand-router'
 import React from 'react'
 import qs from 'qs'
 import xhr from 'xhr'
+import Me from './models/me'
 import PublicPage from './pages/public'
 import ReposPage from './pages/repos'
 import Layout from './layout'
@@ -47,6 +48,7 @@ export default Router.extend({
       json: true
     }, (err, req, body) => {
       console.log(body)
+      app.me.token = body.token
     })
   }
 })
