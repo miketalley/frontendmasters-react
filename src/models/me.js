@@ -11,7 +11,7 @@ export default Model.extend({
     login: 'string',
     avatar_url: 'string'
   },
-  session {
+  session: {
     token: 'string'
   },
   onTokenChange () {
