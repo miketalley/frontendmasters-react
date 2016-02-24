@@ -44,7 +44,7 @@ export default Router.extend({
     console.log(query)
 
     xhr({
-      url: "https://<heroku app for gatekeeper https://github.com/prose/gatekeeper" + query.code,
+      url: "https://localhosttestauth.herokuapp.com/authenticate" + query.code,
       json: true
     }, (err, req, body) => {
       console.log(body)
