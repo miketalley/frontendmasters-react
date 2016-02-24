@@ -45,7 +45,7 @@ export default Router.extend({
     console.log(query)
 
     xhr({
-      url: "https://localhosttestauth.herokuapp.com/authenticate" + query.code,
+      url: "https://localhosttestauth.herokuapp.com/authenticate/" + query.code,
       json: true
     }, (err, req, body) => {
       console.log(body)
