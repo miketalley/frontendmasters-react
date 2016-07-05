@@ -24,10 +24,11 @@ export default Router.extend({
     '': 'public',
     'repos': 'repos',
     'login': 'login',
+    'logout': 'logout',
     'auth/callback?:query': 'authCallback'
   },
   public () {
-    this.renderPage(<PublicPage />, {layout: false})
+    this.renderPage(<PublicPage />) //, {layout: false})
   },
   repos () {
     this.renderPage(<ReposPage />)
@@ -42,14 +43,21 @@ export default Router.extend({
   },
   authCallback (query) {
     query = qs.parse(query)
-    console.log(query)
+    console.log('Query: ', query)
 
     xhr({
       url: "https://localhosttestauth.herokuapp.com/authenticate/" + query.code,
       json: true
     }, (err, req, body) => {
-      console.log(body)
+      console.log('Body: ', body)
       app.me.token = body.token
+      this.redirectTo('/repos')
+      // This is the long hand version of the above code
+      // this.history.navigate('/repos', {replace: true})
     })
+  },
+  logout () {
+    window.localStorage.clear()
+    window.location = '/'
   }
 })
